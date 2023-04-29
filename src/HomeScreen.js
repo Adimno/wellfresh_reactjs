@@ -36,11 +36,12 @@ const HomeScreen = () => {
       });
   }, [navigate]);
 
+  
   const handleSignOut = () => {
     auth
       .signOut()
       .then(() => {
-        navigate(LoginScreen);
+        navigate('/login');
       })
       .catch((error) => alert(error.message));
   };
