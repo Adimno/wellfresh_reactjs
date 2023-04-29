@@ -11,12 +11,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const LoginScreen = () => {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [userRole, setUserRole] = useState('patient');
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -28,54 +26,17 @@ const LoginScreen = () => {
     return unsubscribe;
   }, [navigate]);
 
-  const handleSignUp = () => {
-    if (password !== passwordConfirm) {
-      alert("Passwords don't match");
-      return;
-    }
-  
-    auth.createUserWithEmailAndPassword(email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user;
-        console.log('Registered with:', user.email);
-  
-        // Save user data to Firestore
-        firestore.collection('users').doc(user.uid).set({
-          firstName,
-          lastName,
-          email,
-          role: userRole,
-        })
-        .then(() => {
-          console.log('User data saved to Firestore');
-          navigate('/HomeScreen');
-        })
-        .catch(error => {
-          console.log(error);
-          alert('Failed to save user data');
-        });
-      })
-      .catch(error => console.log(error));
-  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      console.log(email);
-      console.log(password);
       console.log('Logged in successfully!');
     } catch (error) {
       console.log(error);
-      console.log(email);
-      console.log(password);
+
     }
   };
-
-  const handleRoleSelect = (role) => {
-    setUserRole(role);
-  };
-
 
 
   return (
@@ -118,7 +79,7 @@ const LoginScreen = () => {
         <Button
           variant="outline-primary"
           type="submit"
-          onClick={handleSignUp}
+          onClick={() => navigate('/Register')}
         >
           Register
         </Button>
