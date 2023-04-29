@@ -4,10 +4,6 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAYm9LfK5vbmzNV0ymQ_FgKsGMhDtH5Z_o",
   authDomain: "wellfresh-f971a.firebaseapp.com",
