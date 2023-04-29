@@ -16,7 +16,7 @@ const HomeScreen = () => {
       return;
     }
 
-    const usersRef = firestore.collection('Users');
+    const usersRef = firestore.collection('users');
     usersRef
       .where('email', '==', user.email)
       .get()

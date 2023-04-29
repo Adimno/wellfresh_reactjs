@@ -58,15 +58,19 @@ const LoginScreen = () => {
       .catch(error => console.log(error));
   };
 
-  const handleLogin = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then(userCredentials => {
-        const user = userCredentials.user;
-        console.log('Logged in with:', user.email);
-      })
-      .catch(error => alert(error.message))
-  }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      console.log(email);
+      console.log(password);
+      console.log('Logged in successfully!');
+    } catch (error) {
+      console.log(error);
+      console.log(email);
+      console.log(password);
+    }
+  };
 
   const handleRoleSelect = (role) => {
     setUserRole(role);
@@ -83,26 +87,6 @@ const LoginScreen = () => {
         </Card.Header>
         <Card.Body>
           <Form>
-            <Form.Group controlId="formBasicFirstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter first name"
-                value={firstName}
-                onChange={e => setFirstName(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicLastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter last name"
-                value={lastName}
-                onChange={e => setLastName(e.target.value)}
-              />
-            </Form.Group>
-
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -122,31 +106,6 @@ const LoginScreen = () => {
                 onChange={e => setPassword(e.target.value)}
               />
             </Form.Group>
-
-            <Form.Group controlId="formBasicConfirmPassword">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Confirm Password"
-                value={passwordConfirm}
-onChange={e => setPasswordConfirm(e.target.value)}
-/>
-</Form.Group>
-
-<Dropdown>
-          <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-            {userRole === 'patient' ? 'Patient' : 'Doctor'}
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item onSelect={() => handleRoleSelect('patient')}>
-              Patient
-            </Dropdown.Item>
-            <Dropdown.Item onSelect={() => handleRoleSelect('doctor')}>
-              Doctor
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
 
         <Button
           variant="primary"
