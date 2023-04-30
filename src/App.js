@@ -10,6 +10,8 @@ import Profile from './routes/Profile';
 import Contact from './routes/Contact';
 import HomePatient from './routes/HomePatient'
 import DoctorDetails from './routes/doctorDetails';
+import DateSelection from './routes/date';
+import HomeDoctor from './routes/HomeDoctor';
 
 function Layout({ children }) {
   return (
@@ -33,11 +35,13 @@ function App() {
                 <Route path="/Register" element={<RegisterScreen />} />
                 <Route path="/Home" element={<Home />} />
                 <Route path="/Home/HomePatient" element={<HomePatient />} />
+                <Route path="/Home/HomeDoctor" element={<HomeDoctor />} />
                 <Route path="/DoctorDetails" element={<DoctorDetails />} />
                 <Route path="/About" element={<About />} />
                 <Route path="/EditProfilePage" element={<EditProfilePage />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/Contact" element={<Contact />} />
+                <Route path="/date" element={<DateSelection />} />
 
               </Routes>
             </Layout>

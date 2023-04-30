@@ -51,7 +51,7 @@ const Home = () => {
     return <div>Loading...</div>;
   } else if (userRole === 'Doctor') {
     return (
-      navigate('./HomePatient')
+      navigate('./HomeDoctor')
     );
   } else {
     return (

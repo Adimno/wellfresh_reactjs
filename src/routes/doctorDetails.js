@@ -60,7 +60,7 @@ function DoctorDetails() {
           <ul className="list-unstyled">
             <div className="row mt-4 ">
               {user.specialties.map((specialty) => (
-                <div className="col-3 border border-secondary border-3 rounded me-5 mt-2">
+                <div className="col-4 col-md-3 border border-secondary border-3 rounded me-5 mt-2">
                   <li key={specialty}>{specialty}</li>
                 </div>
               ))}
@@ -68,6 +68,7 @@ function DoctorDetails() {
           </ul>
         ) : null}
       </div>
+      
     </div>
   );
 }
