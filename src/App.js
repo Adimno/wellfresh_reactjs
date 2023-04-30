@@ -10,8 +10,8 @@ import Profile from './routes/Profile';
 import Contact from './routes/Contact';
 import HomePatient from './routes/HomePatient'
 import DoctorDetails from './routes/doctorDetails';
-import DateSelection from './routes/date';
 import HomeDoctor from './routes/HomeDoctor';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Layout({ children }) {
   return (
@@ -41,7 +41,6 @@ function App() {
                 <Route path="/EditProfilePage" element={<EditProfilePage />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/Contact" element={<Contact />} />
-                <Route path="/date" element={<DateSelection />} />
 
               </Routes>
             </Layout>
