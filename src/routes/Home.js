@@ -51,17 +51,15 @@ const Home = () => {
     return <div>Loading...</div>;
   } else if (userRole === 'Doctor') {
     return (
-      <div>
-        <p>You are a doctor!</p>
-        <button onClick={handleSignOut}>Sign out</button>
-      </div>
+      navigate('./HomePatient')
     );
   } else {
     return (
-      <div>
-        <p>You are a patient!</p>
-        <button onClick={handleSignOut}>Sign out</button>
-      </div>
+      navigate('./HomePatient')
+      // <div>
+      //   <p>You are a patient!</p>
+      //   <button onClick={handleSignOut}>Sign out</button>
+      // </div>
     );
   }
 };

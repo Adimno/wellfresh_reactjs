@@ -18,7 +18,7 @@ const RegisterScreen = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigate("/login");
+        navigate("/");
       }
     });
 

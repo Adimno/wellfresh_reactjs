@@ -8,6 +8,8 @@ import About from './routes/About';
 import EditProfilePage from './routes/EditProfilePage';
 import Profile from './routes/Profile';
 import Contact from './routes/Contact';
+import HomePatient from './routes/HomePatient'
+import DoctorDetails from './routes/doctorDetails';
 
 function Layout({ children }) {
   return (
@@ -27,9 +29,11 @@ function App() {
           element={
             <Layout>
               <Routes>
-                <Route exact path="/login" element={<LoginScreen />} />
+                <Route exact path="/" element={<LoginScreen />} />
                 <Route path="/Register" element={<RegisterScreen />} />
                 <Route path="/Home" element={<Home />} />
+                <Route path="/Home/HomePatient" element={<HomePatient />} />
+                <Route path="/DoctorDetails" element={<DoctorDetails />} />
                 <Route path="/About" element={<About />} />
                 <Route path="/EditProfilePage" element={<EditProfilePage />} />
                 <Route path="/Profile" element={<Profile />} />
