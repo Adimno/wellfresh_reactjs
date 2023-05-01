@@ -24,7 +24,7 @@ function PatientInfo({id}) {
     };
 
     fetchUserData();
-  },);
+  }, []);
 
   return (
     <div>
@@ -55,7 +55,7 @@ function PatientImage({id}) {
     };
 
     fetchUserData();
-  },);
+  }, []);
 
   return (
     <div>
@@ -68,7 +68,6 @@ function PatientImage({id}) {
 
 function AllUsers({id}) {
   const [users, setUsers] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllUsers = async () => {
@@ -78,13 +77,13 @@ function AllUsers({id}) {
       const usersData = usersSnapshot.docs.map((appointment) => ({
         id: appointment.id,
         ...appointment.data()
-      })).filter((user) => user.docId === id && user.status === 'ongoing');
+      })).filter((user) => user.docId === id);
 
       setUsers(usersData);
     };
 
     fetchAllUsers();
-  },);
+  }, []);
 
 
 
@@ -94,18 +93,18 @@ function AllUsers({id}) {
     <ul className='text-center list-unstyled row w-100'>
         {users.map((user) => (
         <li key={user.id} className='col-6 p-2'>
-            <button className="btn border" onClick={() => navigate(`/patientDetails/?patientId=${user.patientId}&month=${user.month}&day=${user.day}&year=${user.year}&time=${user.time}&appointmentId=${user.id}`)}>
+            
         <div className='row '>
             <div className='col-12 col-lg-6'>
-            <PatientImage id={user.patientId}/>
+            {/* <PatientImage id={user.patientId}/> */}
             </div>
             <div className='col'>
-            <PatientInfo id={user.patientId}/>
+            {/* <PatientInfo id={user.patientId}/> */}
             <p>{user.month} {user.day}, {user.year}</p>
             <p>{user.time}</p>
             </div>
         </div>
-          </button>
+        
         </li>
         ))}
     </ul>
