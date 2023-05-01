@@ -118,7 +118,11 @@ function PatientDetails() {
           <p className=" h5">{user.email}</p>
           <button
             className="btn border"
-            onClick={() => navigate(`/appointmentHistory/?patientId=${id}`)}
+            onClick={() =>
+                navigate(
+                  `/appointmentHistoryPatient/?patientId=${id}`
+                )
+              }
           >
             View Appointment History
           </button>
