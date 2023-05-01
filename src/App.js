@@ -13,6 +13,7 @@ import DoctorDetails from './routes/doctorDetails';
 import HomeDoctor from './routes/HomeDoctor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PatientDetails from './routes/patientDetails';
+import AppointmentHistoryPatient from './routes/appointmentHistoryPatient';
 
 function Layout({ children }) {
   return (
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/Home/HomeDoctor" element={<HomeDoctor />} />
                 <Route path="/DoctorDetails" element={<DoctorDetails />} />
                 <Route path="/PatientDetails" element={<PatientDetails />} />
+                <Route path="/AppointmentHistoryPatient" element={<AppointmentHistoryPatient />} />
                 <Route path="/About" element={<About />} />
                 <Route path="/EditProfilePage" element={<EditProfilePage />} />
                 <Route path="/Profile" element={<Profile />} />
