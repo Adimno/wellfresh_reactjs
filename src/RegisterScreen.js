@@ -8,12 +8,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const RegisterScreen = () => {
   const navigate = useNavigate();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [userRole, setUserRole] = useState("patient");
+  const [role, setUserRole] = useState("patient");
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -43,11 +43,11 @@ const RegisterScreen = () => {
           .collection("users")
           .doc(user.uid)
           .set({
-            firstName,
-            lastName,
+            firstname,
+            lastname,
             email,
             password,
-            userRole,
+            role,
           })
           .then(() => {
             console.log("User data saved to Firestore");
@@ -78,7 +78,7 @@ const RegisterScreen = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter first name"
-                value={firstName}
+                value={firstname}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </Form.Group>
@@ -88,7 +88,7 @@ const RegisterScreen = () => {
               <Form.Control
                 type="text"
                 placeholder="Enter last name"
-                value={lastName}
+                value={lastname}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </Form.Group>
@@ -125,7 +125,7 @@ const RegisterScreen = () => {
 
             <Dropdown>
               <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                {userRole === "patient" ? "Patient" : "Doctor"}
+                {role === "patient" ? "Patient" : "Doctor"}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
