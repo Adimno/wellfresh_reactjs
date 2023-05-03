@@ -129,10 +129,10 @@ const RegisterScreen = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item onSelect={() => handleRoleSelect("patient")}>
+                <Dropdown.Item onClick={() => handleRoleSelect("patient")}>
                   Patient
                 </Dropdown.Item>
-                <Dropdown.Item onSelect={() => handleRoleSelect("doctor")}>
+                <Dropdown.Item onClick={() => handleRoleSelect("doctor")}>
                   Doctor
                 </Dropdown.Item>
               </Dropdown.Menu>
