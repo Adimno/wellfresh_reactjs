@@ -33,13 +33,13 @@ function AllUsers() {
       const usersData = usersSnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
-      })).filter((user) => user.role === "Doctor");
+      })).filter((user) => user.role === "doctor");
 
       setUsers(usersData);
     };
 
     fetchAllUsers();
-  }, []);
+  }, );
 
   return (
     <div>
@@ -87,7 +87,7 @@ function HomePatient() {
     };
 
     fetchUserData();
-  }, []);
+  }, );
 
   const handleSignOut = () => {
     auth

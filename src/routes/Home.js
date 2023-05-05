@@ -49,7 +49,7 @@ const Home = () => {
   if (userRole === null) {
     // Waiting for user role to be fetched
     return <div>Loading...</div>;
-  } else if (userRole === 'Doctor') {
+  } else if (userRole === 'doctor') {
     return (
       navigate('./HomeDoctor')
     );

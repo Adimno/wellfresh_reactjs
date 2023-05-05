@@ -14,6 +14,8 @@ import HomeDoctor from './routes/HomeDoctor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PatientDetails from './routes/patientDetails';
 import AppointmentHistoryPatient from './routes/appointmentHistoryPatient';
+import AppointmentList from './routes/appointmentList';
+import AppointmentHistoryDoctor from './routes/appointmentHistoryDoctor';
 
 function Layout({ children }) {
   return (
@@ -39,13 +41,14 @@ function App() {
                 <Route path="/Home/HomePatient" element={<HomePatient />} />
                 <Route path="/Home/HomeDoctor" element={<HomeDoctor />} />
                 <Route path="/DoctorDetails" element={<DoctorDetails />} />
+                <Route path="/AppointmentList" element={<AppointmentList />} />
                 <Route path="/PatientDetails" element={<PatientDetails />} />
                 <Route path="/AppointmentHistoryPatient" element={<AppointmentHistoryPatient />} />
+                <Route path="/AppointmentHistoryDoctor" element={<AppointmentHistoryDoctor />} />
                 <Route path="/About" element={<About />} />
                 <Route path="/EditProfilePage" element={<EditProfilePage />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/Contact" element={<Contact />} />
-
               </Routes>
             </Layout>
           }

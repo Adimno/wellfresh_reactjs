@@ -12,7 +12,6 @@ function PatientInfo({ id }) {
       if (currentUser) {
         const userRef = firestore.collection("users").doc(id);
         const userDoc = await userRef.get();
-        
 
         if (userDoc.exists) {
           const userData = userDoc.data();
@@ -77,7 +76,7 @@ function AllUsers({ id }) {
           id: appointment.id,
           ...appointment.data(),
         }))
-        .filter((user) => user.docId === id && user.status === "ongoing");
+        .filter((user) => user.docId === id && user.status === "done");
 
       setUsers(usersData);
     };
@@ -87,7 +86,6 @@ function AllUsers({ id }) {
 
   return (
     <div>
-      <h3 className="mt-4">Upcoming Appointments</h3>
       <ul className="text-center list-unstyled row w-100">
         {users.map((user) => (
           <li key={user.id} className="col-6 p-2">
@@ -119,9 +117,8 @@ function AllUsers({ id }) {
   );
 }
 
-function HomeDoctor() {
+function AppointmentHistoryDoctor() {
   const navigate = useNavigate();
-  const [user, setUser] = useState([]);
   const [id, setID] = useState("");
 
   useEffect(() => {
@@ -133,8 +130,6 @@ function HomeDoctor() {
         const userDoc = await userRef.get();
 
         if (userDoc.exists) {
-          const userData = userDoc.data();
-          setUser(userData);
           setID(currentUser.uid);
         } else {
           console.log("User not found");
@@ -143,7 +138,7 @@ function HomeDoctor() {
     };
 
     fetchUserData();
-  }, []);
+  },);
 
   const handleSignOut = () => {
     auth
@@ -156,24 +151,13 @@ function HomeDoctor() {
 
   return (
     <div className="container mt-5">
-      <div className="row">
+    <div className="row">
         <div className="col-12 col-sm-12 col-md-4">
           <h1>
-            Hi, Dr. {user.lastname} {user.firstname}
+            Appointments
           </h1>
         </div>
-          <div className="col col-sm-6 col-md-4">
-            <button  className="btn btn-primary me-4"> Schedule</button>
-          </div>
-          <div className="col col-sm-6 col-md-4 mt-2">
-            <button onClick={() =>
-                navigate(
-                  `/appointmentList`
-                )
-              } className="btn btn-primary me-4"> Appointments</button>
-          </div>
       </div>
-
       <div className="row">
         <AllUsers id={id} />
 
@@ -183,4 +167,4 @@ function HomeDoctor() {
   );
 }
 
-export default HomeDoctor;
+export default AppointmentHistoryDoctor;
