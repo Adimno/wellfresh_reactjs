@@ -18,19 +18,23 @@ function DoctorDetails() {
 
     if (currentUser) {
       const userRef = firestore.collection("users").doc(id);
-      const userDoc = await userRef.get();
 
-      if (userDoc.exists) {
-        const userData = userDoc.data();
-        setUser(userData);
-      } else {
-        console.log("User not found");
-      }
+      const unsubscribe = userRef.onSnapshot((userDoc) => {
+        if (userDoc.exists) {
+          const userData = userDoc.data();
+          setUser(userData);
+        } else {
+          console.log("User not found");
+        }
+      });
+
+      return unsubscribe;
     }
   };
 
-  fetchUserData();
+  return fetchUserData();
 }, [id]);
+
 
 
   return (

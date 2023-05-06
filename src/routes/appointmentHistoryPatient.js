@@ -39,19 +39,20 @@ function AllUsers({ id }) {
   useEffect(() => {
   const fetchAllUsers = async () => {
     const usersRef = firestore.collection("appointments");
-    const usersSnapshot = await usersRef.get();
-
-    const usersData = [];
-    usersSnapshot.forEach((doc) => {
-      const appointment = doc.data();
-      if (appointment.patientId === id && appointment.status === "done") {
-        usersData.push({ id: doc.id, ...appointment });
-      }
-    });
-    setUsers(usersData);
+    const unsubscribe = usersRef
+      .where("patientId", "==", id)
+      .where("status", "==", "done")
+      .onSnapshot((usersSnapshot) => {
+        const usersData = [];
+        usersSnapshot.forEach((doc) => {
+          usersData.push({ id: doc.id, ...doc.data() });
+        });
+        setUsers(usersData);
+      });
+    return unsubscribe;
   };
 
-  fetchAllUsers();
+  return fetchAllUsers();
 }, [id]);
 
 
